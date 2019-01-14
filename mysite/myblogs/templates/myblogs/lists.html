@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+    <title>Main Window</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+body.login{background:#;}
+</style>
+<body>
+{% if message %}
+<script>
+alert('{{ message }}')
+</script>
+{% endif %}
+<script type="text/javascript">
+function if_delete() 
+ { 
+     if(confirm("是否确定删除？")) 
+     { 
+         return true; 
+     } 
+     return false; 
+ } 
+
+</script>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="page-header">
+				<h1>
+					Main Header <small>file list</small>
+				</h1>
+			</div>
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/myblogs/lists">{{ user }}</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							 <a href="/myblogs/lists">Link</a>
+						</li>
+						<li>
+							 <a href="/myblogs/lists">Home</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">Action</a>
+								</li>
+								<li>
+									 <a href="#">Another action</a>
+								</li>
+								<li>
+									 <a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">Separated link</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">One more separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input class="form-control" type="text" />
+						</div> <button type="submit" class="btn btn-default">Submit</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							 <a href="/myblogs/logout">Logout</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">Action</a>
+								</li>
+								<li>
+									 <a href="#">Another action</a>
+								</li>
+								<li>
+									 <a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">Separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				
+			</nav>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							文件名
+						</th>
+						<th>
+							上传日期
+						</th>
+						<th>
+							下载
+						</th>
+						<th>
+							删除
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for object in objects %}
+					<tr>
+						<td>
+							{{ object.name }}
+						</td>
+						<td>
+							{{ object.last_modified }}
+						</td>
+						<td>
+                      <a href='/myblogs/download?object="{{ object.name }}"' >download</a>
+                         </td>
+                             <td>
+                    <a href='/myblogs/delete?object="{{ object.name }}"'  onclick="return if_delete()">delete</a>
+						</td>
+					</tr>
+					{% endfor %}
+					<tr class="success">
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							2017-12-18T12:42:16.079340
+						</td>
+			
+					<td>
+                      <a href='/myblogs/download' >download</a>
+                         </td>
+                             <td>
+                    <a href='/myblogs/delete' onclick="return if_delete()">delete</a>
+						</td>
+					</tr>
+					<tr class="error">
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							2017-12-18T12:42:16.079340
+						</td>
+		
+					<td>
+                      <a href='/myblogs/download' >download</a>
+                         </td>
+                             <td>
+                    <a href='/myblogs/delete' onclick="return if_delete()">delete</a>
+						</td>
+					</tr>
+					<tr class="warning">
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							2017-12-18T12:42:16.079340
+						</td>
+	
+					<td>
+                      <a href='/myblogs/download' >download</a>
+                         </td>
+                             <td>
+                    <a href='/myblogs/delete' onclick="return if_delete()">delete</a>
+						</td>
+					</tr>
+					<tr class="info">
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							2017-12-18T12:42:16.079340
+						</td>
+
+					<td>
+                      <a href='/myblogs/download' >download</a>
+                         </td>
+                             <td>
+                    <a href='/myblogs/delete' onclick="return if_delete()">delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table> 
+			<button type="button" class="btn btn-default btn-primary btn-block">提交</button> 
+			<button type="button" class="btn btn-default btn-success btn-block"><a href='/myblogs/upload' >上传</a></button>
+            <ul class="pagination">
+				<li>
+					 <a href="#">Prev</a>
+				</li>
+				<li>
+					 <a href="#">1</a>
+				</li>
+				<li>
+					 <a href="#">2</a>
+				</li>
+				<li>
+					 <a href="#">3</a>
+				</li>
+				<li>
+					 <a href="#">4</a>
+				</li>
+				<li>
+					 <a href="#">5</a>
+				</li>
+				<li>
+					 <a href="#">Next</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

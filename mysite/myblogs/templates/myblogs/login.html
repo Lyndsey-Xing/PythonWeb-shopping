@@ -1,0 +1,73 @@
+ {% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login Window</title>
+</head>
+
+<style>
+body{margin:0;padding:0;font-size:12px;font-family:"Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;color:#333;}
+body.login{background:url({% static 'myblogs/login.png' %})}
+.login #container{background:#FFF;border:1px solid #ccc;width:28em;height:25em;min-width:300px;margin-left:auto;margin-right:auto;margin-top:150px;}
+#container{position:relative;}
+#header{width:100%;background:#417690;color:#ffc;overflow:hidden;}
+#branding{float:left;}
+#branding h1,#branding h1 a{color:#f4f379;}
+#branding h1{paading 0 10px;font-size:26px;color:#f4f379;margin:8px 0;font-weight:normal;}
+#content{margin:10px 15px;}
+.login #content-main{width:100%;}
+#content-main{float:left;}
+.login form{margin-top:1em;}
+.login .form-row{padding:4px 0;float:left;width:100%;}
+.login .form-row label{padding-right:0.5em;line-height:2em;font-size:1em;clear:both;color:#333;}
+.login .form-row #id_username,.login .form-row #id_password{clear:both;padding:6px;width:100%;box-sizing:border-box;}
+.login .submit-row{clear:both;padding:2em 0 0 9.4em;}
+.button,input[type="submit"],input[type="button"], .submit-row input,a.buttom{padding:5px 7px;color:#000;border:1px solid #bbb;border-color:#ddd #aaa #aaa #ddd;}
+</style>
+
+<body class="login">
+{% if message %}
+<script>
+alert('{{ message }}')
+</script>
+{% endif %}
+
+    <div id='container'>
+		<div id="header">
+    		<div id='branding'>
+        		<h1 id="site-name">
+         	  	 	<a href="#">Login</a>
+           		</h1>
+        	</div>
+        
+    	</div>
+    	<div id='content'>
+    		<div id="content-main">
+        		<form id="login-form" action="{% url 'login' %}" method="post">
+            	<input name="" value="" type="hidden">
+            		<div class="form-row">
+                		<label>Username:</label>
+                    	<input id="id_username" maxlength="254" name="username" type="text">
+                	</div>
+                	<div class="form-row">
+                		<label>Password:</label>
+                    	<input id="id_password" name="password" type="password">
+                    	<input name="next" value="/admin/login" type="hidden">
+                	</div>
+                	<div class="submit-row">
+                		<label></label>
+                    	<input value="Log in" type="submit">
+                	</div>
+            	</form>
+            	<script type="text/javascript">
+					document.getElementById('id_username').focus()
+		    	</script>	      
+                 
+        	</div>
+    	</div>
+    
+	</div>
+</div>
+</body>
+</html>
